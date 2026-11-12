@@ -68,6 +68,12 @@
   --status-warning-bg:    #FEF9C3;
   --status-warning-border:#FDE047;
 
+  /* ۴.۱. ارسال شده، رد پای هوش مصنوعی (AI Warning) - نارنجی ED9511 */
+  --status-ai-text:       #9A3412;
+  --status-ai-bg:         #FFF7ED;
+  --status-ai-border:     #ED9511;
+  --status-ai-icon:       #ED9511;
+
   /* ۵. خنثی / نامشخص (Neutral / Unknown) */
   --status-neutral-text:  #475569;
   --status-neutral-bg:    #F1F5F9;
@@ -1174,8 +1180,8 @@ main {
   border-radius: var(--radius-pill);
   font-size: 0.8rem;
   font-weight: 600;
-  line-height: 1;
-  white-space: nowrap;
+  line-height: 1.4;
+  max-width: 100%;
 }
 
 .status-icon {
@@ -1218,6 +1224,17 @@ main {
   color: var(--status-warning-text);
   background-color: var(--status-warning-bg);
   border: 1px solid var(--status-warning-border);
+}
+
+/* ارسال شده، رد پای هوش مصنوعی (نارنجی ED9511) */
+.status-ai-flagged {
+  color: var(--status-ai-text);
+  background-color: var(--status-ai-bg);
+  border: 1px solid var(--status-ai-border);
+}
+
+.status-ai-flagged .status-icon {
+  color: var(--status-ai-icon);
 }
 
 /* خنثی یا نامشخص */

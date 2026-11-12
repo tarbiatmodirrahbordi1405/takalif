@@ -211,7 +211,7 @@
     const s = String(raw ?? '').trim();
     const lower = s.toLowerCase();
 
-    // ۱. رد شده (قرمز غلیظ) — شامل دلایل تفصیلی مثل «رد شده (استفاده از هوش مصنوعی)»
+    // ۱. رد شده (قرمز غلیظ) — شامل «رد شده، استفاده از هوش مصنوعی (تشابه بالای 70 درصد)»
     const isRejected = (
       lower === 'رد' ||
       lower === 'رد شده' ||
@@ -228,10 +228,11 @@
     );
 
     if (isRejected) {
+      const label = (s === 'رد' || lower === 'rejected') ? 'رد شده' : s;
       return {
         cls: 'status-rejected',
         iconType: 'cross',
-        label: (s === 'رد' || lower === 'rejected') ? 'رد شده' : s,
+        label: toPersianDigits(label),
       };
     }
 
@@ -295,37 +296,63 @@
       return {
         cls: 'status-pending',
         iconType: 'clock',
-        label: (s && s !== 'pending') ? s : 'بررسی نشده',
+        label: (s && s !== 'pending') ? toPersianDigits(s) : 'بررسی نشده',
       };
     }
 
-    // ۴. مقادیر دقیق مثبت (تکلیف شماره یک ارسال شده است - سبز)
-    const positiveExact = [
-      'ارسال کرده',
-      'ارسال شده',
-      'تحویل داده',
-      'انجام داده',
-      'بله',
-      'تایید',
-      'تأیید',
-      'yes',
-      'approved',
-    ];
+    // ۴. وضعیت هشدار: ارسال شده، رد پای هوش مصنوعی (نارنجی ED9511 - تشابه بین ۵۰ تا ۷۰ درصد)
+    const isAiFlagged = (
+      lower.includes('رد پای هوش مصنوعی') ||
+      lower.includes('ردپای هوش مصنوعی') ||
+      (lower.includes('هوش مصنوعی') && (lower.includes('50') || lower.includes('۵۰') || lower.includes('بین')))
+    );
 
-    if (positiveExact.includes(s) || positiveExact.includes(lower) || lower.startsWith('ارسال شده') || lower.startsWith('ارسال کرده')) {
+    if (isAiFlagged) {
+      // تبدیل «ارسال کرده» به «ارسال شده» در عنوان خروجی وب‌سایت طبق دستور کاربر
+      const label = s.replace(/ارسال کرده/g, 'ارسال شده');
+      return {
+        cls: 'status-ai-flagged',
+        iconType: 'warning',
+        label: toPersianDigits(label),
+      };
+    }
+
+    // ۵. مقادیر تایید شده / ارسال شده (سبز)
+    const isApproved = (
+      lower.includes('مورد تایید') ||
+      lower.includes('مورد تأیید') ||
+      lower === 'ارسال کرده' ||
+      lower === 'ارسال شده' ||
+      lower === 'تحویل داده' ||
+      lower === 'انجام داده' ||
+      lower === 'بله' ||
+      lower === 'تایید' ||
+      lower === 'تأیید' ||
+      lower === 'yes' ||
+      lower === 'approved' ||
+      lower.startsWith('ارسال شده') ||
+      lower.startsWith('ارسال کرده')
+    );
+
+    if (isApproved) {
+      // تبدیل «ارسال کرده، مورد تایید» به «ارسال شده، مورد تایید» در خروجی وب‌سایت
+      let label = 'ارسال شده';
+      if (lower.includes('مورد تایید') || lower.includes('مورد تأیید')) {
+        label = 'ارسال شده، مورد تایید';
+      }
       return {
         cls: 'status-approved',
         iconType: 'check',
-        label: 'ارسال شده',
+        label,
       };
     }
 
-    // ۵. مقادیر سفارشی دیگر به‌صورت وضعیت خنثی همراه با مقدار خام نمایش داده می‌شوند
+    // ۶. مقادیر سفارشی دیگر به‌صورت وضعیت خنثی همراه با مقدار خام نمایش داده می‌شوند
     if (s && s !== '---' && s !== '-') {
       return {
         cls: 'status-neutral',
         iconType: 'neutral',
-        label: s,
+        label: toPersianDigits(s),
       };
     }
 
@@ -355,6 +382,13 @@
       return `<svg class="status-svg" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
         <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.8" />
         <path d="M10 6v4.5l3 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>`;
+    }
+
+    if (iconType === 'warning') {
+      return `<svg class="status-svg" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+        <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.8" />
+        <path d="M10 6.5V11M10 13.5V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
       </svg>`;
     }
 
