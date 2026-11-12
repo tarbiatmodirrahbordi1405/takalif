@@ -93,6 +93,16 @@
     return String(num ?? '').replace(/\d/g, (d) => '۰۱۲۳۴۵۶۷۸۹'[d]);
   }
 
+  function formatExperience(val) {
+    if (val === undefined || val === null) return '---';
+    let str = String(val).trim();
+    if (!str || str === '---') return '---';
+
+    str = str.replace(/سال\s+سال/g, 'سال').trim();
+    const formatted = toPersianDigits(str);
+    return formatted.includes('سال') ? formatted : `${formatted} سال`;
+  }
+
   /**
    * اعتبارسنجی دقیق کد ملی ۱۰ رقمی با تفکیک دقیق انواع خطا
    * @param {string|number} code - مقدار ورودی
@@ -228,7 +238,10 @@
     );
 
     if (isRejected) {
-      const label = (s === 'رد' || lower === 'rejected') ? 'رد شده' : s;
+      let label = (s === 'رد' || lower === 'rejected') ? 'رد شده' : s;
+      if (label.includes('(')) {
+        label = label.replace(/\s*\(/g, '\n(');
+      }
       return {
         cls: 'status-rejected',
         iconType: 'cross',
@@ -309,7 +322,10 @@
 
     if (isAiFlagged) {
       // تبدیل «ارسال کرده» به «ارسال شده» در عنوان خروجی وب‌سایت طبق دستور کاربر
-      const label = s.replace(/ارسال کرده/g, 'ارسال شده');
+      let label = s.replace(/ارسال کرده/g, 'ارسال شده');
+      if (label.includes('(')) {
+        label = label.replace(/\s*\(/g, '\n(');
+      }
       return {
         cls: 'status-ai-flagged',
         iconType: 'warning',
@@ -599,7 +615,7 @@
     const fields = [
       { label: 'سمت سازمانی', value: position || '---', iconSvg: ROW_ICONS.position },
       { label: 'محل خدمت', value: workplace || '---', iconSvg: ROW_ICONS.workplace },
-      { label: 'سنوات تجربی', value: experience ? `${toPersianDigits(experience)} سال` : '---', iconSvg: ROW_ICONS.experience },
+      { label: 'سنوات تجربی', value: formatExperience(experience), iconSvg: ROW_ICONS.experience },
     ];
 
     fields.forEach(({ label, value, iconSvg }) => {

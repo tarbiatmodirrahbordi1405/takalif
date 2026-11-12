@@ -1189,6 +1189,14 @@ main {
   align-items: center;
   justify-content: center;
   line-height: 0;
+  flex-shrink: 0;
+}
+
+.status-text {
+  display: inline-block;
+  white-space: pre-line;
+  line-height: 1.35;
+  text-align: right;
 }
 
 .status-svg {
