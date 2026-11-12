@@ -14,8 +14,8 @@
 (() => {
   'use strict';
 
-  // ── ۰. مدیریت پرده بارگذاری اولیه با زمان پایه ۳ ثانیه (App Initial Loader) ──
-  const LOADER_BASE_DURATION_MS = 3000; // ماندگاری پایه ۳ ثانیه طبق الزام کاربر
+  // ── ۰. مدیریت پرده بارگذاری اولیه با زمان پایه ۵ ثانیه (App Initial Loader) ──
+  const LOADER_BASE_DURATION_MS = 5000; // ماندگاری پایه ۵ ثانیه طبق الزام کاربر
   const pageNavStart = performance.now();
 
   function initAppLoader() {
@@ -55,7 +55,7 @@
     }
 
     // زمان‌سنج اطمینان اضطراری (Fallback Safety)
-    setTimeout(dismissLoader, 8000);
+    setTimeout(dismissLoader, 10000);
   }
 
   initAppLoader();
