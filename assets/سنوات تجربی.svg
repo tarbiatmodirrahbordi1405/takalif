@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="800px" viewBox="-4 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>سنوات تجربی</title>
+    <g id="Vivid.JS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Vivid-Icons" transform="translate(-750.000000, -644.000000)">
+            <g id="Icons" transform="translate(37.000000, 169.000000)">
+                <g id="doc" transform="translate(702.000000, 468.000000)">
+                    <g transform="translate(11.000000, 7.000000)">
+                        <!-- Certificate dossier background in Primary Navy -->
+                        <rect id="Rectangle-path" fill="#123652" rx="2" fill-rule="nonzero" x="0" y="0" width="26" height="34"/>
+                        <!-- Service Ribbon Banner in Emerald Green -->
+                        <path d="M5,0 L5,11 L8,8 L11,11 L11,0 L5,0 Z" fill="#28A76A"/>
+                        <!-- Document Text Record Lines in Crisp White -->
+                        <path d="M17,12 L26,12 L26,14 L17,14 L17,12 Z M17,18 L26,18 L26,20 L17,20 L17,18 Z M17,23 L26,23 L26,25 L17,25 L17,23 Z" fill="#FFFFFF"/>
+                        <!-- Bullet status badges in Mint Highlight -->
+                        <path d="M13.995,12.005 L13.995,13.987 L17.005,13.987 L17.005,12.005 L13.995,12.005 Z M13.995,18.015 L13.995,20 L17.005,20 L17.005,18.016 L13.995,18.016 L13.995,18.015 Z M13.995,22.993 L13.995,25.007 L17.005,25.007 L17.005,22.993 L13.995,22.993 Z" fill="#86EFAC"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg width="24" height="24" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Subtle Lens Interior Background -->
+  <circle cx="165" cy="165" r="145" fill="#F3FAF6" stroke="#D8EADF" stroke-width="6"/>
+  <!-- Magnifying Glass Ring and Handle in Corporate Navy (#123652) -->
+  <path d="M355.606,334.381l-63.854-63.855C315.619,241.903,330,205.107,330,165.013c0-90.981-74.019-165-165-165S0,74.031,0,165.013s74.019,165,165,165c40.107,0,76.914-14.391,105.541-38.271l63.853,63.853c2.929,2.929,6.768,4.393,10.606,4.393s7.678-1.464,10.606-4.393C361.465,349.736,361.465,340.239,355.606,334.381z M165,285 c-66.27,0-120-53.73-120-120S98.73,45,165,45s120,53.73,120,120S231.27,285,165,285z" fill="#123652"/>
+  <!-- Participant Avatar Silhouette in Vibrant Emerald (#28A76A) -->
+  <circle cx="165" cy="120" r="42" fill="#28A76A"/>
+  <path d="M98,235 c0-37,30-67,67-67 s67,30,67,67 H98z" fill="#28A76A"/>
+</svg>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="سامانه استعلام وضعیت ارسال تکلیف شماره یک دوره تربیت مدیر راهبردی آموزش و پرورش استان همدان" />
+  <meta name="theme-color" content="#123652" />
+  <meta name="robots" content="noindex" />
+
+  <title>استعلام وضعیت تکلیف شماره یک | دوره تربیت مدیر راهبردی</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- Preload Local Webfonts & Hero Banner (Zero External CDN Dependency) -->
+  <link rel="preload" href="assets/fonts/Vazirmatn[wght].woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/Mj_Lebanon.woff" as="font" type="font/woff" crossorigin />
+  <link rel="preload" href="assets/banner_title_feathered.webp" as="image" type="image/webp" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Configuration loaded before app logic -->
+  <script src="config.js"></script>
+</head>
+<body>
+
+  <!-- ===== Initial Fullscreen App Loader (Pencil Animation) ===== -->
+  <div id="app-loader" class="app-loader" role="status" aria-live="polite" aria-atomic="true">
+    <div class="app-loader-content">
+      <div class="app-loader-brand">
+        <span>دوره تربیت مدیر راهبردی</span>
+      </div>
+
+      <!-- Animated Pencil SVG with Educational Navy & Green Palette -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 200"
+        class="pencil"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <defs>
+          <clipPath id="pencil-eraser-portal">
+            <rect height="30" width="30" ry="5" rx="5" />
+          </clipPath>
+        </defs>
+        <circle
+          transform="rotate(-113,100,100)"
+          stroke-linecap="round"
+          stroke-dashoffset="439.82"
+          stroke-dasharray="439.82 439.82"
+          stroke-width="2"
+          stroke="rgba(255, 255, 255, 0.45)"
+          fill="none"
+          r="70"
+          class="pencil__stroke"
+        />
+        <g transform="translate(100,100)" class="pencil__rotate">
+          <g fill="none">
+            <!-- Facet 1: Mid Navy (#1D557F / hsl(206, 62%, 42%)) -->
+            <circle
+              transform="rotate(-90)"
+              stroke-dashoffset="402"
+              stroke-dasharray="402.12 402.12"
+              stroke-width="30"
+              stroke="hsl(206, 62%, 42%)"
+              r="64"
+              class="pencil__body1"
+            />
+            <!-- Facet 2: Highlight Navy (#2E79B4 / hsl(206, 60%, 54%)) -->
+            <circle
+              transform="rotate(-90)"
+              stroke-dashoffset="465"
+              stroke-dasharray="464.96 464.96"
+              stroke-width="10"
+              stroke="hsl(206, 60%, 54%)"
+              r="74"
+              class="pencil__body2"
+            />
+            <!-- Facet 3: Deep Brand Navy (#123652 / hsl(206, 64%, 26%)) -->
+            <circle
+              transform="rotate(-90)"
+              stroke-dashoffset="339"
+              stroke-dasharray="339.29 339.29"
+              stroke-width="10"
+              stroke="hsl(206, 64%, 26%)"
+              r="54"
+              class="pencil__body3"
+            />
+          </g>
+          <g transform="rotate(-90) translate(49,0)" class="pencil__eraser">
+            <g class="pencil__eraser-skew">
+              <!-- Eraser rubber in slate ice-blue -->
+              <rect height="30" width="30" ry="5" rx="5" fill="hsl(206, 42%, 74%)" />
+              <rect clip-path="url(#pencil-eraser-portal)" height="30" width="5" fill="hsl(206, 42%, 62%)" />
+              <!-- Metallic ferrule collar in steel slate -->
+              <rect height="20" width="30" fill="hsl(206, 15%, 88%)" />
+              <rect height="20" width="15" fill="hsl(206, 15%, 72%)" />
+              <rect height="20" width="5" fill="hsl(206, 15%, 80%)" />
+              <rect height="2" width="30" y="6" fill="hsla(206, 25%, 15%, 0.25)" />
+              <rect height="2" width="30" y="13" fill="hsla(206, 25%, 15%, 0.25)" />
+            </g>
+          </g>
+          <g transform="rotate(-90) translate(49,-30)" class="pencil__point">
+            <!-- Natural cedar wood cone -->
+            <polygon points="15 0,30 30,0 30" fill="hsl(35, 75%, 72%)" />
+            <polygon points="15 0,6 30,0 30" fill="hsl(35, 65%, 52%)" />
+            <!-- Graphite point in deep navy -->
+            <polygon points="15 0,20 10,10 10" fill="hsl(206, 64%, 20%)" />
+          </g>
+        </g>
+      </svg>
+
+      <div class="app-loader-text-group">
+        <h2 class="app-loader-title">
+          در حال بارگذاری سامانه
+          <span class="app-loader-pulse-dots" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </h2>
+      </div>
+
+      <span class="sr-only">سامانه استعلام وضعیت تکلیف در حال آماده‌سازی و بارگذاری است...</span>
+    </div>
+  </div>
+
+  <!-- Skip link for keyboard users (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">رفتن به محتوای اصلی</a>
+
+  <!-- ===== Ambient Aurora Background (Aceternity / Design System) ===== -->
+  <div class="aurora-container" aria-hidden="true">
+    <div class="aurora-layer"></div>
+  </div>
+
+  <!-- ===== Site Header Banner ===== -->
+  <header class="site-header" role="banner">
+    <!-- Header Ambient Aurora (Green Spectrum / Reverse Direction) -->
+    <div class="header-aurora" aria-hidden="true">
+      <div class="header-aurora-layer"></div>
+    </div>
+
+    <div class="header-inner">
+      <div class="header-banner-wrap">
+        <h1 class="sr-only" id="portal-title">استعلام وضعیت تکلیف شماره یک - دوره تربیت مدیر راهبردی آموزش و پرورش استان همدان</h1>
+        <picture class="banner-picture">
+          <source srcset="assets/banner_title_feathered.webp" type="image/webp" />
+          <img
+            src="assets/banner_title_feathered.webp"
+            alt="دوره تربیت مدیر راهبردی - آموزش و پرورش استان همدان"
+            class="portal-banner-img"
+            width="838"
+            height="572"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Main Content Container ===== -->
+  <main id="main-content" aria-labelledby="portal-title">
+    <div class="portal-container">
+
+      <!-- Inquiry Card -->
+      <section class="inquiry-card" aria-label="فرم استعلام وضعیت تکلیف">
+        <div class="card-eyebrow">تکلیف شماره یک</div>
+        <h2 class="card-heading">
+          <!-- Magnifier Icon (Adapted to Portal Design System) -->
+          <svg class="heading-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <g id="mag-lens-elements">
+              <path class="mag-handle" d="M17.607,14.79l4.8,4.8a1.994,1.994,0,0,1-2.82,2.82l-4.8-4.8Z" fill="#5C7285" />
+              <path class="mag-glass-base" d="M19,10A9,9,0,0,1,1,10a8.637,8.637,0,0,1,.36-2.5,8.992,8.992,0,0,1,17.28,0A8.637,8.637,0,0,1,19,10Z" fill="#28A76A" />
+              <ellipse class="mag-glass-highlight" cx="10" cy="7.5" rx="8.64" ry="6.5" fill="#86EFAC" />
+              <path class="mag-glare" d="M5,11a1,1,0,0,1-1-1,6.006,6.006,0,0,1,6-6,1,1,0,0,1,0,2,4,4,0,0,0-4,4A1,1,0,0,1,5,11Z" fill="#FFFFFF" opacity="0.95" />
+            </g>
+            <g id="mag-frame">
+              <path class="mag-rim" d="M18.856,14.624a10.022,10.022,0,1,0-4.234,4.234l4.254,4.255a2.994,2.994,0,1,0,4.239-4.23ZM2,10a8,8,0,1,1,8,8A8.009,8.009,0,0,1,2,10ZM21.7,21.708a1,1,0,0,1-1.4,0l-3.967-3.968a10.092,10.092,0,0,0,1.4-1.406L21.705,20.3a.976.976,0,0,1-.009,1.407Z" fill="#123652" />
+            </g>
+          </svg>
+          <span>استعلام وضعیت تکلیف شماره یک</span>
+        </h2>
+
+        <form class="inquiry-form" id="inquiry-form" novalidate>
+          <div class="form-group">
+            <label for="melli-input" class="form-label">
+              <img src="assets/کد ملی فراگیر.svg" class="label-icon" alt="" aria-hidden="true" width="18" height="18" />
+              <span>کد ملی فراگیر</span>
+              <span class="required-indicator" aria-hidden="true">*</span>
+            </label>
+
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="melli-input"
+                name="national_id"
+                class="form-input"
+                inputmode="numeric"
+                maxlength="10"
+                placeholder="مثال: ۱۲۳۴۵۶۷۸۹۰"
+                autocomplete="off"
+                aria-required="true"
+              />
+              <button
+                type="button"
+                class="btn-clear"
+                id="btn-clear"
+                aria-label="پاک کردن ورودی کد ملی"
+                title="پاک کردن"
+                hidden
+              >
+                &times;
+              </button>
+            </div>
+
+            <div class="field-feedback" aria-live="polite">
+              <span class="field-hint" id="field-hint">کد ملی را بدون خط تیره یا فاصله وارد نمایید.</span>
+              <span class="field-success" id="field-success" role="status"></span>
+              <span class="field-error" id="field-error" role="alert" aria-live="assertive"></span>
+            </div>
+          </div>
+
+          <!-- Submit CTA with Morph Animation -->
+          <div class="submit-wrapper">
+            <button type="submit" class="btn-primary" id="submit-btn" aria-live="polite">
+              <span class="btn-text">
+                <img src="assets/بررسی وضعیت تکلیف.svg" class="btn-cta-icon" alt="" aria-hidden="true" width="19" height="19" />
+                <span>بررسی وضعیت تکلیف</span>
+              </span>
+              <span class="btn-spinner" aria-hidden="true">
+                <svg class="spinner-svg" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="rgba(255, 255, 255, 0.3)" stroke-width="3" />
+                  <path d="M12 2a10 10 0 0 1 10 10" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Skeleton Loading Card (Animated Shimmer) -->
+      <section class="skeleton-card" id="skeleton-loader" aria-hidden="true" hidden>
+        <div class="skeleton-header">
+          <div class="skeleton-shimmer skeleton-name"></div>
+          <div class="skeleton-shimmer skeleton-pill"></div>
+        </div>
+        <div class="skeleton-rows">
+          <div class="skeleton-row">
+            <div class="skeleton-shimmer skeleton-label"></div>
+            <div class="skeleton-shimmer skeleton-val"></div>
+          </div>
+          <div class="skeleton-row">
+            <div class="skeleton-shimmer skeleton-label"></div>
+            <div class="skeleton-shimmer skeleton-val"></div>
+          </div>
+          <div class="skeleton-row">
+            <div class="skeleton-shimmer skeleton-label"></div>
+            <div class="skeleton-shimmer skeleton-val"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Unified Official Result Card (Document Style) -->
+      <section
+        class="result-card"
+        id="result-card"
+        aria-live="polite"
+        aria-label="اطلاعات پرونده و وضعیت تکلیف"
+        hidden
+      >
+        <div class="result-card-header">
+          <div class="participant-badge-row">
+            <h3 class="participant-name">
+              <img src="assets/فراگیر.svg" class="participant-icon" alt="" aria-hidden="true" width="22" height="22" />
+              <span id="res-participant-name"></span>
+            </h3>
+            <span class="status-pill" id="res-status-pill">
+              <span class="status-icon" id="res-status-icon" aria-hidden="true"></span>
+              <span class="status-text" id="res-status-text"></span>
+            </span>
+          </div>
+        </div>
+
+        <dl class="result-dl" id="res-details-list"></dl>
+
+        <div class="result-footer" id="res-footer">
+          <span class="query-time" id="res-query-time"></span>
+        </div>
+      </section>
+
+      <!-- System Notification & Alert Container -->
+      <div id="alert-container" aria-live="polite"></div>
+
+    </div>
+  </main>
+
+  <!-- ===== Site Footer ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-branding">
+        <picture class="footer-herasat-picture">
+          <source srcset="assets/logo_herasat_navy.webp" type="image/webp" />
+          <img
+            src="assets/logo_herasat_navy.png"
+            alt="نشان اداره حراست آموزش و پرورش استان همدان"
+            class="footer-herasat-emblem"
+            width="136"
+            height="136"
+            decoding="async"
+          />
+        </picture>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
