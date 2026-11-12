@@ -16,7 +16,7 @@
 
   // ── ۰. مدیریت پرده بارگذاری اولیه (App Initial Loader) ──
   // توجه: زمان ۵ ثانیه‌ای قبلی جهت ارتقای اساسی سرعت لودینگ به ۶۰۰ میلی‌ثانیه کاهش یافت (قابل تنظیم توسط مدیر)
-  const LOADER_MIN_DISPLAY_MS = 600;
+  const LOADER_MIN_DISPLAY_MS = 5000;
   const LOADER_MAX_FALLBACK_MS = 2500;
   const pageNavStart = performance.now();
 
@@ -62,7 +62,7 @@
 
     const bannerImg = document.querySelector('.portal-banner-img');
     const imgPromise = (bannerImg && bannerImg.decode)
-      ? bannerImg.decode().catch(() => {})
+      ? bannerImg.decode().catch(() => { })
       : Promise.resolve();
 
     Promise.all([fontsPromise, imgPromise]).then(dismissLoader).catch(dismissLoader);
@@ -365,22 +365,22 @@
 
   // ── ۳. عناصر و ارجاعات DOM ────────────────────────────────────────────────
 
-  const form               = document.getElementById('inquiry-form');
-  const input              = document.getElementById('melli-input');
-  const btnClear           = document.getElementById('btn-clear');
-  const fieldHint          = document.getElementById('field-hint');
-  const fieldSuccess       = document.getElementById('field-success');
-  const fieldError         = document.getElementById('field-error');
-  const submitBtn          = document.getElementById('submit-btn');
-  const skeletonLoader     = document.getElementById('skeleton-loader');
-  const resultCard         = document.getElementById('result-card');
+  const form = document.getElementById('inquiry-form');
+  const input = document.getElementById('melli-input');
+  const btnClear = document.getElementById('btn-clear');
+  const fieldHint = document.getElementById('field-hint');
+  const fieldSuccess = document.getElementById('field-success');
+  const fieldError = document.getElementById('field-error');
+  const submitBtn = document.getElementById('submit-btn');
+  const skeletonLoader = document.getElementById('skeleton-loader');
+  const resultCard = document.getElementById('result-card');
   const resParticipantName = document.getElementById('res-participant-name');
-  const resStatusPill      = document.getElementById('res-status-pill');
-  const resStatusIcon      = document.getElementById('res-status-icon');
-  const resStatusText      = document.getElementById('res-status-text');
-  const resDetailsList     = document.getElementById('res-details-list');
-  const resQueryTime       = document.getElementById('res-query-time');
-  const alertContainer     = document.getElementById('alert-container');
+  const resStatusPill = document.getElementById('res-status-pill');
+  const resStatusIcon = document.getElementById('res-status-icon');
+  const resStatusText = document.getElementById('res-status-text');
+  const resDetailsList = document.getElementById('res-details-list');
+  const resQueryTime = document.getElementById('res-query-time');
+  const alertContainer = document.getElementById('alert-container');
 
   // ── ۴. مدیریت تعاملات فیلد ورودی و بازخورد هوشمند ──────────────────────────
 
@@ -463,8 +463,8 @@
       fetch(CONFIG.API_URL, {
         method: 'GET',
         cache: 'no-store',
-      }).catch(() => {});
-    } catch (_) {}
+      }).catch(() => { });
+    } catch (_) { }
   }
 
   input.addEventListener('focus', prewarmBackend, { once: true });
