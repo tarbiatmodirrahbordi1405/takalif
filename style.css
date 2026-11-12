@@ -3,56 +3,14 @@
    نظام جامع طراحی (DESIGN_SYSTEM.md) — نسخه رسمی و اختصاصی
    ========================================================================== */
 
-/* ---------- ۰. بارگذاری قلم‌های محلی (Local Webfonts - Zero CDN Dependency) ---------- */
+/* ---------- ۰. بارگذاری قلم محلی متغیر (Local Variable Webfont - Single File, Zero CDN) ---------- */
 
-/* قلم عنوان و تیتر اصلی پورتال (MJ_Lebanon) */
-@font-face {
-  font-family: 'MJ_Lebanon';
-  src: local('MJ_Lebanon'),
-       local('Mj_Lebanon'),
-       local('MJ Lebanon'),
-       local('Mj Lebanon'),
-       url('assets/fonts/Mj_Lebanon.woff') format('woff'),
-       url('assets/fonts/Mj_Lebanon.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* قلم پایه و متون پورتال (Vazirmatn - متغیر و ایستا) */
+/* قلم جامع و متغیر پورتال (پوشش پیوسته تمام وزن‌ها از ۱۰۰ تا ۹۰۰ با یک فایل woff2) */
 @font-face {
   font-family: 'Vazirmatn';
   src: local('Vazirmatn'),
-       url('assets/fonts/Vazirmatn[wght].woff2') format('woff2-variations'),
-       url('assets/fonts/Vazirmatn-Regular.woff2') format('woff2');
+       url('assets/fonts/Vazirmatn[wght].woff2') format('woff2');
   font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Vazirmatn';
-  src: local('Vazirmatn Medium'),
-       url('assets/fonts/Vazirmatn-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Vazirmatn';
-  src: local('Vazirmatn SemiBold'),
-       url('assets/fonts/Vazirmatn-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Vazirmatn';
-  src: local('Vazirmatn Bold'),
-       url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');
-  font-weight: 700 800;
   font-style: normal;
   font-display: swap;
 }
@@ -139,7 +97,6 @@
 
   /* قلم‌ها و انتقال‌ها (Font & Transition) */
   --font-family: 'Vazirmatn', 'Shabnam', 'IRANSans', Tahoma, -apple-system, sans-serif;
-  --font-title:  'MJ_Lebanon', 'Mj_Lebanon', 'MJ Lebanon', 'Mj Lebanon', var(--font-family);
   --transition-standard: 180ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-morph:    320ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -171,7 +128,7 @@ body {
   position: relative;
 }
 
-/* ---------- ۲.۱. پس‌زمینه شفق قطبی تعاملی (Aurora Ambient Background) ---------- */
+/* ---------- ۲.۱. پس‌زمینه شفق قطبی تعاملی (Aurora Ambient Background - Compositor Only) ---------- */
 .aurora-container {
   position: fixed;
   inset: 0;
@@ -184,81 +141,47 @@ body {
 
 .aurora-layer {
   position: absolute;
-  inset: -10px;
-  opacity: 0.45;
-  will-change: transform;
+  inset: 0;
+  opacity: 0.40;
   pointer-events: none;
-  filter: blur(10px) invert(1);
-
-  --white: #ffffff;
-  --black: #000000;
-  --transparent: transparent;
-  --blue-500: #3b82f6;
-  --indigo-300: #a5b4fc;
-  --blue-300: #93c5fd;
-  --violet-200: #ddd6fe;
-  --blue-400: #60a5fa;
-
-  --white-gradient: repeating-linear-gradient(
-    100deg,
-    var(--white) 0%,
-    var(--white) 7%,
-    var(--transparent) 10%,
-    var(--transparent) 12%,
-    var(--white) 16%
-  );
-  --dark-gradient: repeating-linear-gradient(
-    100deg,
-    var(--black) 0%,
-    var(--black) 7%,
-    var(--transparent) 10%,
-    var(--transparent) 12%,
-    var(--black) 16%
-  );
-  --aurora: repeating-linear-gradient(
-    100deg,
-    var(--blue-500) 10%,
-    var(--indigo-300) 15%,
-    var(--blue-300) 20%,
-    var(--violet-200) 25%,
-    var(--blue-400) 30%
-  );
-
-  background-image: var(--white-gradient), var(--aurora);
-  background-size: 300% 200%;
-  background-position: 50% 50%, 50% 50%;
-  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, #000000 10%, transparent 70%);
-  mask-image: radial-gradient(ellipse at 100% 0%, #000000 10%, transparent 70%);
+  background: radial-gradient(ellipse 70% 55% at 90% 0%, rgba(147, 197, 253, 0.42) 0%, rgba(165, 180, 252, 0.24) 35%, rgba(221, 214, 254, 0.12) 55%, transparent 75%);
 }
 
 .aurora-layer::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background-image: var(--white-gradient), var(--aurora);
-  background-size: 200% 100%;
-  background-attachment: fixed;
-  mix-blend-mode: difference;
-  animation: aurora 60s linear infinite;
+  inset: -15%;
+  background: radial-gradient(ellipse 60% 45% at 80% 15%, rgba(96, 165, 250, 0.28) 0%, rgba(165, 180, 252, 0.16) 40%, transparent 70%);
   pointer-events: none;
+  will-change: transform;
+  animation: aurora-shift 40s ease-in-out infinite alternate;
 }
 
-@keyframes aurora {
-  from {
-    background-position: 50% 50%, 50% 50%;
+@keyframes aurora-shift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
-  to {
-    background-position: 350% 50%, 350% 50%;
+  50% {
+    transform: translate3d(-25px, 20px, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(20px, -15px, 0) scale(0.97);
+  }
+}
+
+@media (max-width: 540px), (hover: none) {
+  .aurora-layer::after {
+    animation: none;
+    display: none;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   .aurora-layer {
-    filter: blur(10px) invert(0);
-    background-image: var(--dark-gradient), var(--aurora);
+    background: radial-gradient(ellipse 70% 55% at 90% 0%, rgba(59, 130, 246, 0.20) 0%, rgba(99, 102, 241, 0.15) 35%, transparent 75%);
   }
   .aurora-layer::after {
-    background-image: var(--dark-gradient), var(--aurora);
+    background: radial-gradient(ellipse 60% 45% at 80% 15%, rgba(59, 130, 246, 0.18) 0%, rgba(147, 197, 253, 0.10) 40%, transparent 70%);
   }
 }
 
@@ -345,6 +268,12 @@ body.app-loading {
   pointer-events: none;
 }
 
+.app-loader.fade-out .pencil,
+.app-loader.fade-out [class*="pencil__"],
+.app-loader.fade-out .app-loader-pulse-dots span {
+  animation-play-state: paused !important;
+}
+
 .app-loader-content {
   display: flex;
   flex-direction: column;
@@ -364,12 +293,10 @@ body.app-loading {
   font-size: 0.8125rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.92);
-  background: rgba(18, 54, 82, 0.45);
+  background: rgba(18, 54, 82, 0.78);
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0.35rem 0.95rem;
   border-radius: var(--radius-pill);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 4px 12px rgba(15, 87, 59, 0.25);
 }
 
@@ -600,7 +527,7 @@ body.app-loading {
   z-index: 1;
 }
 
-/* ---------- ۴.۱. پس‌زمینه شفق قطبی سربرگ (Header Green Aurora - Reverse Direction) ---------- */
+/* ---------- ۴.۱. پس‌زمینه شفق قطبی سربرگ (Header Green Aurora - Compositor Only) ---------- */
 .header-aurora {
   position: absolute;
   inset: 0;
@@ -613,63 +540,38 @@ body.app-loading {
 
 .header-aurora-layer {
   position: absolute;
-  inset: -15px;
-  opacity: 0.55;
-  will-change: transform;
+  inset: 0;
+  opacity: 0.50;
   pointer-events: none;
-  filter: blur(12px);
-
-  --green-dark-stripe: rgba(10, 46, 32, 0.7);
-  --green-transparent: transparent;
-  --aurora-mint: #a7f3d0;
-  --aurora-emerald: #34d399;
-  --aurora-teal: #2dd4bf;
-  --aurora-seafoam: #6ee7b7;
-  --aurora-jade: #059669;
-
-  --header-dark-gradient: repeating-linear-gradient(
-    260deg,
-    var(--green-dark-stripe) 0%,
-    var(--green-dark-stripe) 7%,
-    var(--green-transparent) 10%,
-    var(--green-transparent) 12%,
-    var(--green-dark-stripe) 16%
-  );
-
-  --header-aurora: repeating-linear-gradient(
-    260deg,
-    var(--aurora-emerald) 10%,
-    var(--aurora-seafoam) 15%,
-    var(--aurora-mint) 20%,
-    var(--aurora-teal) 25%,
-    var(--aurora-jade) 30%
-  );
-
-  background-image: var(--header-dark-gradient), var(--header-aurora);
-  background-size: 300% 200%;
-  background-position: 50% 50%, 50% 50%;
-  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000000 35%, transparent 88%);
-  mask-image: radial-gradient(ellipse at 50% 50%, #000000 35%, transparent 88%);
+  background: radial-gradient(ellipse 75% 65% at 50% 50%, rgba(167, 243, 208, 0.32) 0%, rgba(52, 211, 153, 0.22) 35%, rgba(45, 212, 191, 0.12) 65%, transparent 85%);
 }
 
 .header-aurora-layer::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background-image: var(--header-dark-gradient), var(--header-aurora);
-  background-size: 200% 100%;
-  background-attachment: fixed;
-  mix-blend-mode: screen;
-  animation: aurora-reverse 60s linear infinite;
+  inset: -20%;
+  background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(110, 231, 183, 0.25) 0%, rgba(5, 150, 105, 0.14) 45%, transparent 75%);
   pointer-events: none;
+  will-change: transform;
+  animation: header-aurora-shift 35s ease-in-out infinite alternate;
 }
 
-@keyframes aurora-reverse {
-  from {
-    background-position: 350% 50%, 350% 50%;
+@keyframes header-aurora-shift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
-  to {
-    background-position: 50% 50%, 50% 50%;
+  50% {
+    transform: translate3d(-15px, 8px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(15px, -8px, 0) scale(0.96);
+  }
+}
+
+@media (max-width: 540px), (hover: none) {
+  .header-aurora-layer::after {
+    animation: none;
+    display: none;
   }
 }
 
@@ -732,6 +634,7 @@ main {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   padding: var(--space-lg);
+  contain: layout;
   transition: box-shadow var(--transition-standard), border-color var(--transition-standard);
 }
 
@@ -1072,6 +975,7 @@ main {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   overflow: hidden;
+  contain: layout paint;
   animation: cardFadeUp 180ms ease;
 }
 
@@ -1166,6 +1070,7 @@ main {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   overflow: hidden;
+  contain: layout paint;
   animation: cardFadeUp 180ms ease;
   transition: box-shadow var(--transition-standard);
 }
@@ -1493,4 +1398,10 @@ main {
   .btn-primary.is-loading {
     width: 100% !important;
   }
+}
+
+/* توقف پویانمایی لایه‌های شفق در زمان پنهان بودن برگه مرورگر */
+body.tab-hidden .aurora-layer::after,
+body.tab-hidden .header-aurora-layer::after {
+  animation-play-state: paused !important;
 }
